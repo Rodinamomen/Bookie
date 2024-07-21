@@ -1,17 +1,31 @@
 [versions]
 agp = "8.5.0"
+glide = "4.15.1"
+gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+lifecycleViewmodelKtx = "2.8.3"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+navigationFragmentKtx = "2.7.7"
+retrofit = "2.11.0"
+runner = "1.0.2"
+espressoCoreVersion = "3.0.2"
+appcompatV7 = "28.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -19,8 +33,13 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+runner = { group = "com.android.support.test", name = "runner", version.ref = "runner" }
+espresso-core = { group = "com.android.support.test.espresso", name = "espresso-core", version.ref = "espressoCoreVersion" }
+appcompat-v7 = { group = "com.android.support", name = "appcompat-v7", version.ref = "appcompatV7" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
