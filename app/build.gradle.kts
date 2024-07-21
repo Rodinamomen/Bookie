@@ -42,7 +42,21 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    //navigation components
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
+
+    //viewmodel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // gson converter
+    implementation (libs.gson)
+    implementation (libs.converter.gson)
+    // retrofit
+    implementation (libs.retrofit)
+    // glide
+    implementation (libs.glide)
 }
