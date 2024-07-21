@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "465053659588",
+    "project_id": "bookie-6a1e4",
+    "storage_bucket": "bookie-6a1e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465053659588:android:0770ea6f892435d3b5f491",
+        "android_client_info": {
+          "package_name": "com.example.bookie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArr6WM4oC2UZfiUex_xLwz-DoSokwBuSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
