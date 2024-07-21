@@ -47,4 +47,14 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
+
+    <style name="text_title" parent="">
+        <item name="android:textSize">30sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_error_message" parent="">
+        <item name="android:textColor">@color/md_theme_error_mediumContrast</item>
+    </style>
 </resources>

@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeViewModel :HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         homeViewModel = HomeViewModel(HomeRepoImp(ApiClient))
         homeViewModel.getBooksFromRemote()
         Log.d("testing log", "onViewCreated:$ ")
