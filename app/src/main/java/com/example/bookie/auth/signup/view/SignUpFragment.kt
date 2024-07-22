@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.bookie.R
 import com.example.bookie.auth.signup.model.User
 import com.example.bookie.auth.signup.repo.SignUpRepoImp
@@ -105,6 +106,8 @@ class SignUpFragment : Fragment() {
 
         binding.btnGoToSignIn.setOnClickListener {
             //navigate to the sign in fragment
+            view.findNavController().navigate(R.id.signInFragment)
+//            view.findNavController().popBackStack()
         }
 
     }

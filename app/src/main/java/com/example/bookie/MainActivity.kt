@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 
 import com.example.bookie.home.repo.HomeRepoImp
 import com.example.bookie.home.viewmodel.HomeViewModel
@@ -20,5 +21,7 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.booksList.observe(this){
             Log.d("testing log", "onViewCreated:${it} ")
         }
+//        val navController = findNavController(R.id.app_navigation)
+
     }
 }
