@@ -12,7 +12,20 @@
           "package_name": "com.example.bookie"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "465053659588-5d9r54kh2mvqi302s0275tu86jt956o9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookie",
+            "certificate_hash": "8e274d81afa4382d43bc1e37066174c4bce6ed0f"
+          }
+        },
+        {
+          "client_id": "465053659588-qqlvqknda6gcoi64kls5p9juek57fpr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyArr6WM4oC2UZfiUex_xLwz-DoSokwBuSc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465053659588-aa279fbvhh4coiimtqhr09b349tsr0g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
