@@ -11,7 +11,8 @@ interface SignUpRepo {
 
     suspend fun createNewUser(newUser: User, password: String, callback: (Boolean, String?) -> Unit)
 
-    suspend fun handleSignInResult(data: Intent?): FirebaseUser?
+//    suspend fun handleSignInResult(data: Intent?): FirebaseUser?
+    suspend fun handleSignInResult(data: Intent?, callback: (FirebaseUser?, Boolean,String?) -> Unit)
     fun getGoogleSignInIntent(): Intent
 
 

@@ -67,17 +67,17 @@ class SignUpRepoImp(val context: Context): SignUpRepo {
              }
     }
 
-    override suspend fun handleSignInResult(data: Intent?): FirebaseUser? {
+    override suspend fun handleSignInResult(data: Intent?, callback: (FirebaseUser?,Boolean, String?) -> Unit) {
         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-        return try {
-            val account = task.getResult(ApiException::class.java)
-            val user = firebaseAuthWithGoogle(account)
-            user?.let { saveUserToFirestore(it) }
-            user
-        } catch (e: ApiException) {
-            Log.w(TAG, "Google sign in failed", e)
-            null
-        }
+             try {
+                val account = task.getResult(ApiException::class.java)
+                val user = firebaseAuthWithGoogle(account)
+                user?.let { saveUserToFirestore(it) }
+                callback(user,true,null)
+            } catch (e: ApiException) {
+                 Log.w(TAG, "Google sign in failed", e)
+                 callback(null,false,null)
+            }
     }
 
     override fun getGoogleSignInIntent(): Intent {
