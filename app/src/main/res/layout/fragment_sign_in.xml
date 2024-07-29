@@ -101,6 +101,17 @@
         app:layout_constraintStart_toStartOf="@+id/txt_et_email_"
         app:layout_constraintTop_toBottomOf="@+id/txt_et_password_" />
 
+    <Button
+        android:id="@+id/btn_google_sign_in"
+        style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Continue With Google"
+        app:icon="@drawable/google_icon"
+        app:layout_constraintEnd_toEndOf="@+id/txt_et_email_"
+        app:layout_constraintStart_toStartOf="@+id/txt_et_email_"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -112,7 +123,7 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_et_nam_e"
         app:layout_constraintStart_toStartOf="@+id/txt_et_name_"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signin">
+        app:layout_constraintTop_toBottomOf="@+id/btn_google_sign_in">
 
         <View
             android:layout_width="0dp"

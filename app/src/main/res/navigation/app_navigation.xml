@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -21,5 +24,13 @@
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="com.example.bookie.PreferencesFragment"
+        android:label="fragment_preferences"
+        tools:layout="@layout/fragment_preferences" />
 </navigation>
