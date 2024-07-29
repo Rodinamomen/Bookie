@@ -2,11 +2,8 @@ package com.example.bookie.auth.signup.view
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.Intent
-import android.credentials.GetCredentialRequest
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,13 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.credentials.CustomCredential
-import androidx.credentials.GetCredentialResponse
-import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.bookie.R
 import com.example.bookie.auth.signup.model.User
@@ -29,27 +21,8 @@ import com.example.bookie.auth.signup.repo.SignUpRepoImp
 import com.example.bookie.auth.signup.viewModel.SignUpViewModel
 import com.example.bookie.auth.signup.viewModel.SignUpViewModelFactory
 import com.example.bookie.databinding.FragmentSignUpBinding
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.identitycredentials.IdentityCredentialManager
-import com.google.android.gms.tasks.Task
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
-import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthCredential
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.launch
-import kotlin.math.log
 
 
 class SignUpFragment : Fragment() {
@@ -92,15 +65,17 @@ class SignUpFragment : Fragment() {
             val signInIntent = signUpViewModel.getGoogleSignInIntent()
             googleSignInLauncher.launch(signInIntent)
         }
-        signUpViewModel.user.observe(viewLifecycleOwner, Observer { user ->
+        signUpViewModel.user.observe(requireActivity()) { user ->
             if (user != null) {
                 Log.d(TAG, "User Info: Name: ${user.displayName}, Email: ${user.email}")
+                Toast.makeText(requireContext(), "Signed you up successfully.", Toast.LENGTH_SHORT).show()
                 // Navigate to the preferences screen
+                view.findNavController().navigate(R.id.preferencesFragment)
 
             } else {
                 Toast.makeText(requireContext(), "Failed to signed you up.", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
 
         binding.btnSignup.setOnClickListener {
             val name = binding.txtEtName.editText?.text.toString()
@@ -132,14 +107,15 @@ class SignUpFragment : Fragment() {
                     signUpViewModel.signUpByEmailAndPassword(userData, password)
 
                     createDialog()
-                    showDialog()
+                    showLoadingDialog()
 
                     signUpViewModel.isUserCreated.observe(requireActivity()){isCreated->
-                        dismissDialog()
+                        dismissLoadingDialog()
                         if (isCreated != null){
                             if (isCreated){
-                                // navigate to the categories fragment.
+                                // navigate to the preferences fragment.
                                 binding.tvErrorMessage.visibility = View.GONE
+                                view.findNavController().navigate(R.id.preferencesFragment)
                                 Log.d(TAG, "onViewCreated: isCreated from the repo is true")
                             }else{
                                 binding.tvErrorMessage.visibility = View.VISIBLE
@@ -164,7 +140,6 @@ class SignUpFragment : Fragment() {
         binding.btnGoToSignIn.setOnClickListener {
             //navigate to the sign in fragment
             view.findNavController().navigate(R.id.signInFragment)
-//            view.findNavController().popBackStack()
         }
 
     }
@@ -177,13 +152,14 @@ class SignUpFragment : Fragment() {
     private fun createDialog(){
         val dialog = layoutInflater.inflate(R.layout.loading_dialog, null)
         loadingDialog.setContentView(dialog)
-        loadingDialog.setCancelable(true)
+        loadingDialog.setCancelable(false)
+        loadingDialog.setCanceledOnTouchOutside(false)
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
-    private fun showDialog(){
+    private fun showLoadingDialog(){
         loadingDialog.show()
     }
-    private fun dismissDialog(){
+    private fun dismissLoadingDialog(){
         loadingDialog.dismiss()
     }
 

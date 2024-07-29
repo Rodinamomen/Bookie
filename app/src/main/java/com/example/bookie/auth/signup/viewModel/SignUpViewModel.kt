@@ -16,7 +16,7 @@ class SignUpViewModel(var repo: SignUpRepo): ViewModel() {
     val isUserCreated  = _isUserCreated
 
     private val _user = MutableLiveData<FirebaseUser?>()
-    val user: LiveData<FirebaseUser?> get() = repo.user
+    val user: LiveData<FirebaseUser?> = _user
 
 
     fun signUpByEmailAndPassword(user: User, password: String){
@@ -34,8 +34,13 @@ class SignUpViewModel(var repo: SignUpRepo): ViewModel() {
 
     fun handleSignInResult(data: Intent?) {
         viewModelScope.launch {
-            val firebaseUser = repo.handleSignInResult(data)
-            _user.value = firebaseUser
+            repo.handleSignInResult(data){user, isCreated ,errorMessage ->
+                _user.value = user
+                _isUserCreated.value = isCreated
+
+            }
+
+
         }
 
     }
