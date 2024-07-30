@@ -1,8 +1,8 @@
 package com.example.bookie.network
 
-import com.example.bookie.network.model.BookRespone
+import com.example.bookie.network.model.BookResponse
 
 
 interface RemoteDataSource {
-    suspend fun getBooksFromRemote(): BookRespone
+    suspend fun getBooksFromRemote(): BookResponse
 }
