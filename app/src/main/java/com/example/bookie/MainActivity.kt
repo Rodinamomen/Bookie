@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.getBooksFromRemote()
         Log.d("testing log", "onViewCreated:$ ")
         homeViewModel.booksList.observe(this){
-            Log.d("testing log", "onViewCreated:${it} ")
+            books ->
+            Log.d("testing log", "onViewCreated:${books[1]} ")
         }
 //        val navController = findNavController(R.id.app_navigation)
 
