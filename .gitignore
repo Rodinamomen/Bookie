@@ -15,4 +15,4 @@
 local.properties
 #secrets
 
-secrets.properties
+/secrets.properties
