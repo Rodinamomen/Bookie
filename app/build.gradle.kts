@@ -1,7 +1,9 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -14,10 +16,15 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+    }
+    secrets {
+        propertiesFileName = "secrets.properties"
+        defaultPropertiesFileName = "local.properties"
+        ignoreList.add("keyToIgnore") // Ignore the key "keyToIgnore"
+        ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -35,6 +42,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         dataBinding = true
         viewBinding = true
     }
@@ -78,6 +86,7 @@ dependencies {
     implementation (libs.androidx.credentials)
     implementation (libs.androidx.credentials.play.services.auth)
     implementation (libs.googleid.v110)
+    implementation(kotlin("script-runtime"))
 
 
 }
