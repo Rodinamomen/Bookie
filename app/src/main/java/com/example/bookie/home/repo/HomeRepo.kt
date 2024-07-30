@@ -1,7 +1,7 @@
 package com.example.bookie.home.repo
 
-import com.example.bookie.network.model.BooksResponse
+import com.example.bookie.network.model.BookResponse
 
 interface HomeRepo {
-   suspend fun getBooksFromRemote(): BooksResponse
+   suspend fun getBooksFromRemote(): BookResponse
 }
