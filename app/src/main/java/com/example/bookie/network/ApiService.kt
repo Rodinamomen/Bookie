@@ -5,5 +5,10 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("v1/volumes")
-    suspend fun getBooksFromRemote(@Query("key") apiKey: String , @Query("q") q:String): BookResponse
+    suspend fun getBooksFromRemote(
+        @Query("key") apiKey: String,
+        @Query("q") q: String,
+        @Query("startIndex") startIndex: Int = 0,
+        @Query("maxResults") maxResults: Int = 40
+    ): BookResponse
 }

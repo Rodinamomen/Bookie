@@ -8,7 +8,7 @@ import com.example.bookie.network.model.Item
 import kotlinx.coroutines.launch
 
 class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
-    private val _booksList = MutableLiveData<List<Item>>()
+   /* private val _booksList = MutableLiveData<List<Item>>()
     val booksList: LiveData<List<Item>> = _booksList
 
     fun getBooksFromRemote(){
@@ -16,5 +16,5 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
            val result= homeRepo.getBooksFromRemote().items
             _booksList.value= result
         }
-    }
+    }*/
 }
