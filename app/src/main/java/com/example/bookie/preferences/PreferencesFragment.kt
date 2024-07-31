@@ -1,10 +1,11 @@
-package com.example.bookie
+package com.example.bookie.preferences
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.bookie.R
 
 
 class PreferencesFragment : Fragment() {
