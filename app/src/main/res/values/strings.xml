@@ -2,4 +2,5 @@
     <string name="app_name">Bookie</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="preferences_top_bar_title">Choose your favourite genres</string>
 </resources>
