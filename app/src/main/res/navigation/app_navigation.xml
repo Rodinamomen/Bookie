@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/preferencesFragment"
-        android:name="com.example.bookie.PreferencesFragment"
+        android:name="com.example.bookie.preferences.view.PreferencesFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_preferences" />
 </navigation>
