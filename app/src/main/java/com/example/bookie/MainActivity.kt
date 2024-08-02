@@ -9,8 +9,6 @@ import androidx.navigation.findNavController
 import com.example.bookie.home.repo.HomeRepoImp
 import com.example.bookie.home.viewmodel.HomeViewModel
 import com.example.bookie.network.ApiClient
-import com.example.bookie.preferences.repo.PreferencesRepoImp
-import com.example.bookie.preferences.viewmodel.PreferencesViewModel
 
 class MainActivity : AppCompatActivity() {
  // private lateinit var homeViewModel :HomeViewModel

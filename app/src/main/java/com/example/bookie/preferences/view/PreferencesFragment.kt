@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.bookie.R
 import com.example.bookie.databinding.FragmentPreferencesBinding
 import com.example.bookie.preferences.adapter.PreferencesAdapter
+import com.example.bookie.preferences.model.Categories
+import com.example.bookie.preferences.viewmodel.PreferencesViewModel
 
 
 class PreferencesFragment : Fragment() {
     private lateinit var binding : FragmentPreferencesBinding
+    private lateinit var viewModel: PreferencesViewModel
     val bisacMainCategories = listOf(
         "Antique & Collectibles",
         "Architecture",
@@ -80,11 +85,21 @@ class PreferencesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel= PreferencesViewModel()
         val adapter = PreferencesAdapter(bisacMainCategories,requireContext())
         binding.rvCategories.adapter=adapter
         binding.rvCategories.layoutManager= GridLayoutManager(requireActivity(),2)
         binding.btnNext.setOnClickListener {
-            Toast.makeText(requireContext(), "${adapter.getSelectedItem()}", Toast.LENGTH_SHORT).show()
+             viewModel.addPreferences(adapter.getSelectedItem())
+        }
+        viewModel.preferencesAdded.observe(requireActivity()){
+            if(it== true){
+                val action= PreferencesFragmentDirections.actionPreferencesFragmentToForUFragment()
+                findNavController().navigate(action)
+                Toast.makeText(requireContext(), "done", Toast.LENGTH_SHORT).show()
+
+
+            }
         }
     }
 
