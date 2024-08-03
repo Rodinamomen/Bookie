@@ -75,9 +75,21 @@ class SearchFragment : Fragment() {
                 binding.tvNoResults.visibility = View.GONE
                 adapter.clearData()
                 binding.recyclerViewSearchResults.layoutManager = LinearLayoutManager(requireContext())
+//                val filteredBooks = results.items.filter { book ->
+//                    !book.volumeInfo.title.isNullOrEmpty() || !book.volumeInfo.authors.isNullOrEmpty()
+//                }
+                // to remove duplicated books
+                val uniqueTitles = mutableSetOf<String>()
                 val filteredBooks = results.items.filter { book ->
-                    !book.volumeInfo.title.isNullOrEmpty() || !book.volumeInfo.authors.isNullOrEmpty()
+                    val title = book.volumeInfo.title
+                    if (!title.isNullOrEmpty() && !uniqueTitles.contains(title)) {
+                        uniqueTitles.add(title)
+                        true
+                    } else {
+                        false
+                    }
                 }
+
                 adapter.setData(filteredBooks)
                 binding.recyclerViewSearchResults.adapter = adapter
 
