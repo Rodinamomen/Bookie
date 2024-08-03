@@ -79,7 +79,7 @@ class SignInFragment : Fragment() {
                 Log.d(TAG, "User Info: Name: ${user.displayName}, Email: ${user.email}, uid: ${user.uid}")
                 Toast.makeText(requireContext(), "Signed you in successfully.", Toast.LENGTH_SHORT).show()
                 // Navigate to the home screen
-                view.findNavController().navigate(R.id.preferencesFragment)
+                view.findNavController().navigate(R.id.forUFragment)
 
             } else {
                 createConnectionErrorDialog()
@@ -104,7 +104,7 @@ class SignInFragment : Fragment() {
                         dismissLoadingDialog()
                         if (isLogged){
                             // navigate to the home screen
-                            view.findNavController().navigate(R.id.preferencesFragment)
+                            view.findNavController().navigate(R.id.forUFragment)
                             Toast.makeText(requireContext(), "Logged in.", Toast.LENGTH_SHORT).show()
                             Log.d(TAG, "onViewCreated: the user logged in successfully,")
                         }else{

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs.kotlin")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
@@ -70,13 +71,14 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.googleid)
     implementation(libs.play.services.identity.credentials)
+    implementation(libs.androidx.paging.common.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     //navigation components
-    implementation (libs.androidx.navigation.fragment.ktx.v235)
-    implementation (libs.androidx.navigation.ui.ktx.v235)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     //viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

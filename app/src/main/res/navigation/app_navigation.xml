@@ -25,12 +25,21 @@
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
-            android:id="@+id/action_signInFragment_to_preferencesFragment"
-            app:destination="@id/preferencesFragment" />
+            android:id="@+id/action_signInFragment_to_forUFragment"
+            app:destination="@id/forUFragment" />
     </fragment>
     <fragment
         android:id="@+id/preferencesFragment"
-        android:name="com.example.bookie.preferences.PreferencesFragment"
+        android:name="com.example.bookie.preferences.view.PreferencesFragment"
         android:label="fragment_preferences"
-        tools:layout="@layout/fragment_preferences" />
+        tools:layout="@layout/fragment_preferences" >
+        <action
+            android:id="@+id/action_preferencesFragment_to_forUFragment"
+            app:destination="@id/forUFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forUFragment"
+        android:name="com.example.bookie.foryou.view.ForUFragment"
+        android:label="fragment_for_u"
+        tools:layout="@layout/fragment_for_u" />
 </navigation>

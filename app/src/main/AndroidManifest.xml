@@ -23,6 +23,9 @@
         <meta-data
             android:name="com.google.android.gms.auth.api.signin.OAuthClientId"
             android:value="465053659588-aa279fbvhh4coiimtqhr09b349tsr0g9.apps.googleusercontent.com" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
