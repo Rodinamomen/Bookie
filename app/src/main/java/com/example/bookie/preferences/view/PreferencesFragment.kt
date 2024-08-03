@@ -97,8 +97,6 @@ class PreferencesFragment : Fragment() {
                 val action= PreferencesFragmentDirections.actionPreferencesFragmentToForUFragment()
                 findNavController().navigate(action)
                 Toast.makeText(requireContext(), "done", Toast.LENGTH_SHORT).show()
-
-
             }
         }
     }
