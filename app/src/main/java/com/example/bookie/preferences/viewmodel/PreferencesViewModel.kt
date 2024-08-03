@@ -13,9 +13,9 @@ class PreferencesViewModel(private val preferencesRepo: PreferencesRepo): ViewMo
     private val _categoriesList = MutableLiveData<List<String>>()
     val categoriesList: LiveData<List<String>> = _categoriesList
    fun getBooksCategories(){
-        viewModelScope.launch{
-           val result = preferencesRepo.getBooksCategories()
-            _categoriesList.value= result
-        }
+//        viewModelScope.launch{
+//           val result = preferencesRepo.getBooksCategories()
+//            _categoriesList.value= result
+//        }
     }
 }
