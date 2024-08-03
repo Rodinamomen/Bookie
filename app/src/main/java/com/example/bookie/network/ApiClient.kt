@@ -16,7 +16,6 @@ object ApiClient:RemoteDataSource {
         return response
     }*/
     override suspend fun getBooksFromRemote(startIndex:Int?,query:String): BookResponse {
-        val query = "book"
         Log.d("ApiClient", "Request URL: https://www.googleapis.com/books/v1/volumes?key=${BuildConfig.key}&q=$query&startIndex=${startIndex}")
         val response = ApiHelper.retrofit.create(ApiService::class.java)
             .getBooksFromRemote(
@@ -27,8 +26,6 @@ object ApiClient:RemoteDataSource {
         Log.d("ApiClient", "Response: ${response.items}")
         return response
     }
-
-
 
 
     /*   override suspend fun getBooksCategories(): List<String> {

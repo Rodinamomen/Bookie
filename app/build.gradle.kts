@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.googleid)
     implementation(libs.play.services.identity.credentials)
+    implementation(libs.androidx.paging.common.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
