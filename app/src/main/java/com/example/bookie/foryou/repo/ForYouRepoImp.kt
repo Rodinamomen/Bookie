@@ -1,5 +1,6 @@
 package com.example.bookie.foryou.repo
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -11,6 +12,7 @@ import com.example.bookie.network.model.Item
 
 class ForYouRepoImp(val remoteDataSource: RemoteDataSource):ForYouRepo {
     override suspend fun getBooks(query: String): LiveData<PagingData<Item>> {
+        Log.d("testing", "getBooks:$query")
         return Pager(
                 config = PagingConfig(
                     pageSize = 40,

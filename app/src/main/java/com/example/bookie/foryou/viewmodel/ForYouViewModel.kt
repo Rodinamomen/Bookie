@@ -39,6 +39,7 @@ class ForYouViewModel(val forYouRepo: ForYouRepo):ViewModel() {
     fun getBooks(query:String){
         viewModelScope.launch {
             forYouRepo.getBooks(query).observeForever {
+                Log.d("testingquery", "getBooks:${query}")
                 _books.postValue(it)
             }
 
