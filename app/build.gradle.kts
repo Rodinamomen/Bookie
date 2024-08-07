@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
@@ -88,7 +89,12 @@ dependencies {
     // retrofit
     implementation (libs.retrofit)
     // glide
-    implementation (libs.glide)
+    implementation(libs.glide)
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
+    //okHttp
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
+    // interceptor
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
     // firebase
     implementation(platform(libs.firebase.bom))
