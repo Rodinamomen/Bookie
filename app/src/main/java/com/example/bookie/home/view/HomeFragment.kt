@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
 
                 when(item.itemId) {
                     R.id.search -> {
-                        findNavController().navigate(R.id.aboutBookFragment)
+                        findNavController().navigate(R.id.searchFragment)
                         true
                     }
                     R.id.home -> {

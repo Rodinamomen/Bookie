@@ -26,30 +26,4 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
 
         }
     }
-
-    fun getAllBooks(){
-        viewModelScope.launch {
-            _cachedBooks.value = homeRepo.getAllBooks()
-        }
-    }
-
-    fun insertBook(book: Item){
-        viewModelScope.launch {
-            homeRepo.insertBook(book)
-        }
-    }
-
-    fun deleteAllBooks(){
-        viewModelScope.launch {
-            homeRepo.deleteAllBooks()
-        }
-    }
-
-    fun getBookById(book: Item){
-        viewModelScope.launch {
-            homeRepo.insertBook(book)
-        }
-    }
-
-
 }
