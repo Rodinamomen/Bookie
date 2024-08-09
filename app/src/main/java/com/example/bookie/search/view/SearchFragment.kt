@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookie.R
 import com.example.bookie.auth.signup.repo.SignUpRepoImp
@@ -98,6 +99,10 @@ class SearchFragment : Fragment() {
                 binding.tvNoResults.visibility = View.VISIBLE
                 Log.d(TAG, "onViewCreated: can't find any books results")
             }
+        }
+
+        binding.btnBackToHomeSearch.setOnClickListener {
+            view.findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }
 
     }

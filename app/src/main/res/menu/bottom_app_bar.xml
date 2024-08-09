@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home_icon"
+        android:contentDescription="Home"
+        />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search"
+        android:title="Search"
+        android:contentDescription="Search"
+        />
+
+    <item
+        android:id="@+id/for_you"
+        android:title="For You"
+        android:icon="@drawable/star_icon"
+        android:contentDescription="For You"
+        />
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/profile_icon"
+        android:contentDescription="Profile"
+        />
+
+
+</menu>

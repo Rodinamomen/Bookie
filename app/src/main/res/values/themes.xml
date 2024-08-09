@@ -61,4 +61,8 @@
     <style name="text_sub_title" parent="">
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="sharp_corner_button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">0dp</item>
+    </style>
 </resources>
