@@ -14,13 +14,16 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
     private val _pagedBooks = MutableLiveData<PagingData<Item>>()
     val pagedBooks: LiveData<PagingData<Item>> = _pagedBooks
 
+    private val _cachedBooks = MutableLiveData<List<Item>>()
+    val cachedBooks: LiveData<List<Item>> = _cachedBooks
+
 
     fun getPagedBooks(){
         viewModelScope.launch {
             homeRepo.getPagedBooks().observeForever {
                 _pagedBooks.postValue(it)
             }
+
         }
     }
-
 }
