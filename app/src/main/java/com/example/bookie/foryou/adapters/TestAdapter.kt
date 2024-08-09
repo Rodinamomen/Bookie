@@ -22,16 +22,16 @@ class TestAdapter(val context: Context): PagingDataAdapter<Item, TestAdapter.MyH
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val item = getItem(position)
         if (item != null) {
-            val thumbnailUrl = item.volumeInfo?.imageLinks?.thumbnail
-            Log.d("image", "onBindViewHolder:$thumbnailUrl ")
+            val thumbnailUrl = item.volumeInfo.imageLinks.thumbnail
+            val secureUrl = thumbnailUrl.replace("http://", "https://")
+            Log.d("imagelink", "onBindViewHolder:$secureUrl ")
                 Glide.with(context)
-                    .load(thumbnailUrl)
+                    .load(secureUrl)
                     .placeholder(R.drawable.baseline_error_outline_24)
                     .into(holder.iv)
 
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.book_item, parent, false)
         return MyHolder(row)
