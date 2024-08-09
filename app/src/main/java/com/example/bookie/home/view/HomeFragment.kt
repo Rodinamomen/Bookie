@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.bookie.R
+import com.example.bookie.caching.LocalDatabaseImp
 import com.example.bookie.databinding.FragmentHomeBinding
 import com.example.bookie.home.repo.HomeRepoImp
 import com.example.bookie.home.viewmodel.HomeViewModel
@@ -88,7 +89,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getViewModelReady(){
-        val factory = HomeViewModelFactory(HomeRepoImp(ApiClient))
+        val factory = HomeViewModelFactory(HomeRepoImp(ApiClient, LocalDatabaseImp(requireContext())))
         homeViewModel = ViewModelProvider(requireActivity(), factory)[HomeViewModel::class.java]
     }
 
