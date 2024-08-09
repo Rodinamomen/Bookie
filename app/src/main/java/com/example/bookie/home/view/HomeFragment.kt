@@ -75,27 +75,13 @@ class HomeFragment : Fragment() {
                 }
         }
 
-        homeViewModel.getBooksFromRemote()
+        homeViewModel.getPagedBooks()
 
-        Log.d(TAG, "onViewCreated: call the function of getBooksFromRemote() ")
+        homeViewModel.pagedBooks.observe(requireActivity()){books->
+            homeBooksAdapter.submitData(lifecycle , books)
+            homeBooksAdapter.notifyDataSetChanged()
 
-        homeViewModel.booksList.observe(requireActivity()){books->
-            if (!books.items.isNullOrEmpty()){
-                Log.d(TAG, "onViewCreated: books are not null")
-
-                homeBooksAdapter.setData(books.items)
-
-
-            }else{
-                Toast.makeText(requireContext(), "books are null", Toast.LENGTH_SHORT).show()
-            }
         }
-//        homeViewModel.getPagedBooks()
-//
-//        homeViewModel.pagedBooks.observe(requireActivity()){books->
-//            homeBooksAdapter.submitData(lifecycle , books)
-//
-//        }
 
 
     }
