@@ -14,67 +14,63 @@ import com.bumptech.glide.Glide
 import com.example.bookie.R
 import com.example.bookie.network.model.Item
 
-class HomeBooksAdapter(var context: Context): RecyclerView.Adapter<HomeBooksAdapter.MyViewHolder>() {
-//class HomeBooksAdapter(var context: Context): PagingDataAdapter<Item, HomeBooksAdapter.MyViewHolder>(BOOK_COMPARATOR) {
+class HomeBooksAdapter(var context: Context): PagingDataAdapter<Item, HomeBooksAdapter.MyViewHolder>(BOOK_COMPARATOR) {
 
     private val TAG = "HomeBooksAdapter"
-    private var data = listOf<Item>()
 
-//    companion object {
-//        private val BOOK_COMPARATOR = object : DiffUtil.ItemCallback<Item>() {
-//            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-//                return oldItem.id == newItem.id
-//            }
-//
-//            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-//                return oldItem == newItem
-//            }
-//        }
-//    }
+    companion object {
+        private val BOOK_COMPARATOR = object : DiffUtil.ItemCallback<Item>() {
+            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_book_home, parent, false)
         return MyViewHolder(view)
     }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
+    
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, "onBindViewHolder: 1")
-        holder.bookTitle.text = data[position].volumeInfo.title
 
-        if (formatAuthors(data[position].volumeInfo.authors).isNullOrEmpty()){
-            holder.bookAuthor.visibility = View.INVISIBLE
+        val item = getItem(position)
+        if (item != null){
+            holder.bookTitle.text = item.volumeInfo.title
+            if (formatAuthors(item.volumeInfo.authors).isNullOrEmpty()){
+                holder.bookAuthor.visibility = View.INVISIBLE
+            }else{
+                holder.bookAuthor.visibility = View.VISIBLE
+                holder.bookAuthor.text = formatAuthors(item.volumeInfo.authors)
+            }
+
+
+            if (formatAuthors(item.volumeInfo.categories).isNullOrEmpty()){
+                holder.bookCategory.visibility = View.INVISIBLE
+            }else{
+                holder.bookCategory.visibility = View.VISIBLE
+                holder.bookCategory.text = formatCategories(item.volumeInfo.categories)
+            }
+            val securedImageLink = item.volumeInfo.imageLinks.thumbnail.replace("http", "https")
+            Glide.with(context)
+                .load(securedImageLink)
+                .placeholder(R.drawable.paper_icon)
+                .error(R.drawable.paper_icon)
+                .into(holder.bookImage)
+            
+            holder.itemView.setOnClickListener { 
+                // navigate to the book's details
+                Log.d(TAG, "onBindViewHolder:  the item #${position}")
+            }
         }else{
-            holder.bookAuthor.visibility = View.VISIBLE
-            holder.bookAuthor.text = formatAuthors(data[position].volumeInfo.authors)
+            Log.d(TAG, "onBindViewHolder: the item is null")
         }
-
-        if (formatAuthors(data[position].volumeInfo.categories).isNullOrEmpty()){
-            holder.bookCategory.visibility = View.INVISIBLE
-        }else{
-            holder.bookCategory.visibility = View.VISIBLE
-            holder.bookCategory.text = formatCategories(data[position].volumeInfo.categories)
-        }
-
-        val securedImageLink = data[position].volumeInfo.imageLinks.thumbnail.replace("http", "https")
-
-        Glide.with(context)
-            .load(securedImageLink)
-            .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_foreground)
-            .into(holder.bookImage)
+        
     }
-
-    fun setData(books: List<Item>){
-//        if (!data.isNullOrEmpty()){
-            data = books
-//        }
-        notifyDataSetChanged()
-    }
-
+    
     private fun formatAuthors(authors: List<String>?): String {
         return when {
             authors.isNullOrEmpty() -> ""

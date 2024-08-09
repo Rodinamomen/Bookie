@@ -10,18 +10,10 @@ import com.example.bookie.network.model.Item
 import kotlinx.coroutines.launch
 
 class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
-    private val _booksList = MutableLiveData<BookResponse>()
-    val booksList: LiveData<BookResponse> = _booksList
 
     private val _pagedBooks = MutableLiveData<PagingData<Item>>()
     val pagedBooks: LiveData<PagingData<Item>> = _pagedBooks
 
-    fun getBooksFromRemote(){
-        viewModelScope.launch {
-           val result= homeRepo.getBooksFromRemote()
-            _booksList.value= result
-        }
-    }
 
     fun getPagedBooks(){
         viewModelScope.launch {
