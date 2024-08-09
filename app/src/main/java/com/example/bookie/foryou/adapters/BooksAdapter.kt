@@ -11,13 +11,16 @@ import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookie.R
+import com.example.bookie.foryou.adapters.TestAdapter.Companion.ItemDiffCallback
 import com.example.bookie.network.model.Item
 import com.example.bookie.preferences.adapter.PreferencesAdapter.MyHolder
 
-class BooksAdapter(val data :List<Item>,val context:Context): RecyclerView.Adapter<BooksAdapter.MyHolder>() {
+class BooksAdapter(val data :List<Item>,val context:Context):
+    PagingDataAdapter<Item, BooksAdapter.MyHolder>(ItemDiffCallback) {
     class MyHolder(row: View): RecyclerView.ViewHolder(row){
         val bookIv = row.findViewById<ImageView>(R.id.iv_book)
     }

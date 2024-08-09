@@ -20,7 +20,7 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
             homeRepo.getPagedBooks().observeForever {
                 _pagedBooks.postValue(it)
             }
-
         }
     }
+
 }

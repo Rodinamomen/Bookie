@@ -21,23 +21,19 @@ object ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
         return oldItem == newItem
     }
 }
-class ForYouAdapter(val data:List<Item>, val context: Context):PagingDataAdapter<Item, ForYouAdapter.MyHolder>(ItemDiffCallback) {
+class ForYouAdapter(val subject:String, val context: Context):PagingDataAdapter<Item, ForYouAdapter.MyHolder>(ItemDiffCallback) {
     class MyHolder(val row: View): RecyclerView.ViewHolder(row){
         val bookSubject = row.findViewById<TextView>(R.id.tv_book_subject)
-        val booksRv = row.findViewById<RecyclerView>(R.id.rv_books_images)
+   //     val booksRv = row.findViewById<RecyclerView>(R.id.rv_books_images)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val row = LayoutInflater.from(parent.context).inflate(R.layout.books_parent_item,parent,false)
         return MyHolder(row)
     }
 
-    override fun getItemCount(): Int {
-       return data.size
-    }
-
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val booksAdapter= BooksAdapter(data,context)
-        holder.booksRv.adapter=booksAdapter
+        holder.bookSubject.text="subject"
+      /*  val booksAdapter= TestAdapter(context)
+       holder.booksRv.adapter=booksAdapter*/
     }
 }

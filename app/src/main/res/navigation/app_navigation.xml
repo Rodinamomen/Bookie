@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/signInFragment">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.bookie.auth.signup.view.SignUpFragment"
@@ -74,5 +74,9 @@
         android:id="@+id/aboutBookFragment"
         android:name="com.example.bookie.aboutBook.AboutBookFragment"
         android:label="fragment_about_book"
-        tools:layout="@layout/fragment_about_book" />
+        tools:layout="@layout/fragment_about_book" >
+        <argument
+            android:name="aboutBook"
+            app:argType="com.example.bookie.foryou.model.AboutBook" />
+    </fragment>
 </navigation>
