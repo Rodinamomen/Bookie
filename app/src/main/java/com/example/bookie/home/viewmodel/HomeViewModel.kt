@@ -14,6 +14,9 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
     private val _pagedBooks = MutableLiveData<PagingData<Item>>()
     val pagedBooks: LiveData<PagingData<Item>> = _pagedBooks
 
+    private val _cachedBooks = MutableLiveData<List<Item>>()
+    val cachedBooks: LiveData<List<Item>> = _cachedBooks
+
 
     fun getPagedBooks(){
         viewModelScope.launch {
@@ -23,4 +26,30 @@ class HomeViewModel(val homeRepo: HomeRepo):ViewModel() {
 
         }
     }
+
+    fun getAllBooks(){
+        viewModelScope.launch {
+            _cachedBooks.value = homeRepo.getAllBooks()
+        }
+    }
+
+    fun insertBook(book: Item){
+        viewModelScope.launch {
+            homeRepo.insertBook(book)
+        }
+    }
+
+    fun deleteAllBooks(){
+        viewModelScope.launch {
+            homeRepo.deleteAllBooks()
+        }
+    }
+
+    fun getBookById(book: Item){
+        viewModelScope.launch {
+            homeRepo.insertBook(book)
+        }
+    }
+
+
 }

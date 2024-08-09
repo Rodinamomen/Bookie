@@ -108,6 +108,15 @@ dependencies {
     implementation(kotlin("script-runtime"))
     implementation ("androidx.paging:paging-runtime:3.3.1")
 
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt(libs.room.compiler)
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+
 
 }
 
