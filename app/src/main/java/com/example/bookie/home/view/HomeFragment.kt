@@ -11,6 +11,7 @@ import androidx.core.app.FrameMetricsAggregator
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.bookie.R
@@ -55,7 +56,7 @@ class HomeFragment : Fragment() {
 
                 when(item.itemId) {
                     R.id.search -> {
-                        view.findNavController().navigate(R.id.searchFragment)
+                        findNavController().navigate(R.id.aboutBookFragment)
                         true
                     }
                     R.id.home -> {

@@ -44,7 +44,11 @@
         android:id="@+id/forUFragment"
         android:name="com.example.bookie.foryou.view.ForUFragment"
         android:label="fragment_for_u"
-        tools:layout="@layout/fragment_for_u" />
+        tools:layout="@layout/fragment_for_u" >
+        <action
+            android:id="@+id/action_forUFragment_to_aboutBookFragment"
+            app:destination="@id/aboutBookFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.bookie.home.view.HomeFragment"
@@ -53,6 +57,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_forUFragment"
+            app:destination="@id/forUFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -63,4 +70,9 @@
             android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutBookFragment"
+        android:name="com.example.bookie.aboutBook.AboutBookFragment"
+        android:label="fragment_about_book"
+        tools:layout="@layout/fragment_about_book" />
 </navigation>
